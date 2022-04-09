@@ -1,5 +1,4 @@
 const nom = document.getElementById('nom')
-const add=document.getElementById('add')
 
 function nomIsValid(name) {
     return /^[A-Z][a-zA-Z]+[\s]{0,1}[a-zA-Z]{0,10}$/.test(name);
