@@ -7,78 +7,86 @@ function nomIsValid(name) {
 
 const inp1 = document.createElement("input");
 const err = document.createElement("div");
-err.className="error"
+$(err).addClass("error");
 
-function addelem()
-{
+$("#add").click(function(){
 const labb = document.createElement("label");
-labb.setAttribute("for","txt")
-labb.className="form-label"
+$(labb).attr("for","txt")
+$(labb).addClass("form-label")
 const bee = document.createElement("b");
-bee.innerText="Last name :"
+$(bee).text("Last name :")
 
 inp1.type="text";
-inp1.setAttribute("id","txt");
+$(inp1).attr("id","txt");
 inp1.placeholder = "Last name"
 
 const lab = document.createElement("label");
-lab.setAttribute("for","dat")
-lab.className="form-label"
+$(lab).attr("for","dat")
+$(lab).addClass("form-label")
 const be = document.createElement("b");
-be.innerText="Date :"
+$(be).text("Date :")
 const para = document.createElement("input");
 para.type="date";
-para.setAttribute("id","dat")
+$(para).attr("id","dat")
 
-const element = document.getElementById("cl");
+///Adding all the elements to the div
+$(labb).append(bee);
+$("#cl").append(labb);
+$("#cl").append(inp1);
+$("#cl").append(err);
+lab.append(be);
+$("#cl").append(lab);
+$("#cl").append(para);
+$("#add").remove();
+});
 
-labb.appendChild(bee);
-element.appendChild(labb);
-element.appendChild(inp1);
-element.appendChild(err);
-lab.appendChild(be);
-element.appendChild(lab);
-element.appendChild(para);
-add.remove();
-}
 
-
-function verification() {
+$("#Check").click(function(){
     ///first input
     if (nom.value == '') {
-        error.innerHTML = "First name is required"
-        nom.className="form-control is-invalid"
+        $(error).text("First name is required");
+        $(nom).removeClass("form-control is-valid");
+        $(nom).addClass("form-control is-invalid");
     }
     else if(nom.value.length < 4) {
-        error.innerHTML = "First name is too short"
-        nom.className="form-control is-invalid"
+        $(error).text("First name is too short");
+        $(nom).removeClass("form-control is-valid");
+        $(nom).addClass("form-control is-invalid");
     }
     else if(!nomIsValid(nom.value)) {
-            error.innerHTML = "insert a valid name"
-            nom.className="form-control is-invalid"
+            $(error).text("insert a valid name")
+            $(nom).removeClass("form-control is-valid");
+            $(nom).addClass("form-control is-invalid");
         }
     else
     {
-        nom.className="form-control is-valid"
-        error.innerHTML = ''
+        $(nom).removeClass("form-control is-invalid");
+        $(nom).addClass("form-control is-valid");
+        
+        $(error).text('');
     }
 
     ///second input
     if (inp1.value == '') {
-        err.innerHTML = "Last name is required"
-        inp1.className="form-control is-invalid"
+        $(err).text("Last name is required");
+        $(inp1).removeClass("form-control is-valid");
+        $(inp1).addClass("form-control is-invalid");
     }
     else if(inp1.value.length < 4) {
-        err.innerHTML = "Last name is too short"
-        inp1.className="form-control is-invalid"
+        $(err).text("Last name is too short");
+        $(inp1).removeClass("form-control is-valid");
+        $(inp1).addClass("form-control is-invalid");
     }
     else if(!nomIsValid(inp1.value)) {
-            err.innerHTML = "insert a valid name"
-            inp1.className="form-control is-invalid"
+            $(err).text("insert a valid name")
+            $(inp1).removeClass("form-control is-valid");
+            $(inp1).addClass("form-control is-invalid");
         }
     else
     {
-        inp1.className="form-control is-valid"
-        err.innerHTML = ''
+        $(inp1).removeClass("form-control is-invalid");
+        $(inp1).addClass("form-control is-valid");
+        
+        $(err).text('');
     }
-}
+});
